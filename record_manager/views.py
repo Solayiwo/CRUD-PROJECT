@@ -3,7 +3,10 @@ from .forms import StudentForm
 from .models import Student
 
 
-def student_info(request):
+def index(request):
+    return render(request, 'index.html')
+
+def add_student(request):
     if request.method == "POST":
         form = StudentForm(request.POST)
         if form.is_valid():
@@ -12,13 +15,14 @@ def student_info(request):
                 return redirect('/records')
             except Exception:
                 pass
-        else:
-            form = StudentForm()
-        return render(request, 'index.html', {'form':form})
+    else:
+        form = StudentForm()
+    return render(request, 'add_student.html', {'form':form})
 
 def records(request):
     students = Student.objects.all()
-    return render(request, 'records.html', {'students':students})
+    no_record = not students.exists()
+    return render(request, 'records.html', {'students':students, 'no_record': no_record})
 
 def edit_record(request, id):
     student = Student.objects.get(id=id)
