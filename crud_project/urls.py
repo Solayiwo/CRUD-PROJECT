@@ -20,10 +20,11 @@ from record_manager import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('student_info', views.student_info),
-    path('records', views.records),
-    path('edit_records/<int:id>', views.edit_record),
+    path('', views.index),
+    path('add_student/', views.add_student),
+    path('records/', views.records),
+    path('edit_record/<int:id>', views.edit_record),
     path('update_record/<int:id>', views.update_record),
-    path('del_record/<int:id>', views.update_record),
+    path('del_record/<int:id>', views.del_record)
     
 ]
