@@ -1,0 +1,43 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>  
+      <meta charset="UTF-8">  
+      <title>Index</title> 
+  </head>  
+  <body>
+    <form method="POST" class="post-form" action="/update_record/{{student.id}}">
+      {% csrf_token %}    
+      <div class="container">  
+        <center>
+          <h3>Update Student Details</h3>
+            <label>ID:</label>
+              <input type="text" name="id" id="id_id" required maxlength="20" value="{{ student.id }}"/>  
+            <label>First_name:</label>  
+              <input type="text" name="First_name" id="id_First_name" required maxlength="100" value="{{ Student.First_name }}" placeholder="first_name" />  
+            <br>
+            <br>
+            <label>Last_name:</label>  
+              <input type="text" name="Last_name" id="id_Last_name" required maxlength="100" value="{{ Student.Last_name }}"  placeholder="last_name"/> 
+            <label>Age:</label>  
+              <input type="age" name="Age" id="id_Age" required maxlength="15" value="{{ Student.Age }}" placeholder="Your age"/>
+            <br>
+            <br>
+            <label>Email:</label>  
+              <input type="email" name="Email" id="id_Email" required maxlength="100" value="{{ Student.Email }}" placeholder=" email" /> 
+            <label>Phone:</label>  
+              <input type="tel" name="Phone" id="id_Phone" value="{{ Student.Phone }}" placeholder="e.g +666666" pattern="^\+234\d{10,15}" required /> 
+            <br>
+            <br>
+            <label>Location:</label>  
+              <input type="text" name="Location" id="id_Location" required maxlength="15" value="{{ Student.Location }}" placeholder="location" /> 
+            <label>Hobby:</label>  
+              <input type="text" name="Hobby" id="id_Hobby" required maxlength="15" value="{{ Stuent.Hobby }}" placeholder="hobby"/> 
+            
+              <br>
+              <br> 
+          <button type="submit" class="btn btn-success">Update</button>
+      </center> 
+      </div> 
+    </form>  
+  </body>  
+</html>  
