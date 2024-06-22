@@ -1,0 +1,64 @@
+<!DOCTYPE html>  
+<html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Student Records</title> 
+    </head>  
+    <body> 
+        <h2><center>Students Management Record</center></h2> 
+        <center>
+            <table border="1px">  
+                <thead style="background-color: whitesmoke;">  
+                    <tr>  
+                        <th>ID</th>  
+                        <th>First_name</th>  
+                        <th>Last_name</th>  
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Location</th>
+                        <th>Hobby</th>
+                        <th>Actions</th>  
+                    </tr>  
+                </thead> 
+
+                <tbody>
+                    {% if no_record %}
+                    <p><b>No records found</b></p>
+                    {% else %}
+                    {% for student in students %}  
+                    <tr>  
+                        <td><center>{{ student.id }}</center></td>  
+                        <td><center>{{ student.First_name }}</center></td>  
+                        <td><center>{{ student.Last_name }}</center></td>  
+                        <td><center>{{ student.Age }}</center></td>
+                        <td><center>{{ student.Email }}</center></td>
+                        <td><center>{{ student.Phone }}</center></td>
+                        <td><center>{{ student.Location }}</center></td>
+                        <td><center>{{ student.Hobby }}</center></td>
+
+                        <td>  
+                            <a href="/edit_record/{{ student.id }}" style="text-decoration: none;">Edit</a>  
+                            <a href="/del_record/{{ student.id }}" style="text-decoration: none;">Delete</a>  
+                        </td>  
+                    </tr>  
+                    {% endfor %}
+                    {% endif %}  
+                </tbody>  
+            </table>
+        </center>
+
+        <br>  
+        <br>
+        
+        <center>
+            <table style="background-color: black; border-radius: 10px; padding: 5px;">
+            <td>
+                <a href="/add_student/" class="btn btn-success" style="color: blanchedalmond;
+                text-decoration: none; font-size: 20px;" >Add New Record</a>  
+            </td>
+            </table>
+        </center>
+
+    </body>  
+</html>  
