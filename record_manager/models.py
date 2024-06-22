@@ -9,6 +9,7 @@ phone_regex = RegexValidator(
 
 
 class Student(models.Model):
+    id = models.CharField(max_length=20)
     First_name = models.CharField(max_length=50)
     Last_name = models.CharField(max_length=50)
     Age = models.IntegerField()
