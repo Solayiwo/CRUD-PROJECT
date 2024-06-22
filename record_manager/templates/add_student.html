@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">  
+    <head>  
+        <meta charset="UTF-8">
+        <title>Index</title>
+    </head>  
+    <body>  
+        <form method="POST" class="post-form" action="/add_student/">  
+                {% csrf_token %}  
+            <div class="container"> 
+                <center><table border="1px"> 
+                    <thead>
+                        <h3>Enter Student Details</h3>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                ID: {{ form.id }}
+                                First_name: {{form.First_name }}
+                                Last_name: {{form.Last_name }}
+                            </td>
+                        </tr>   
+                        <tr>
+                            <td>
+                                Age: {{ form.Age }}
+                                Email: {{ form.Email }}
+                                Phone: {{ form.Phone }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Location: {{ form.Location }}
+                                Hobby: {{ form.Hobby }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+                <br>
+                <button type="submit" class="btn btn-success">Submit</button>  
+                </center>  
+            </div>  
+        </form>  
+    </body>  
+</html>  
