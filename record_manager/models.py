@@ -1,20 +1,18 @@
 from django.db import models
-from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
+import re
 
-
-phone_regex = RegexValidator(
-    regex=r'^\+?1?\d{9,15}$',
-    message="Phone number must be entered in the format: '+666666666'. up to 15 digits allowed."
-)
-
+def validate_phone_number(value):
+    if not re.match(r'^\+\d{1,15}$', value):
+        raise ValidationError('Phone number must start with "+" and followed by the country code and digits.')
 
 class Student(models.Model):
-    id = models.CharField(max_length=20)
+    id = models.IntegerField(primary_key=True)
     First_name = models.CharField(max_length=50)
     Last_name = models.CharField(max_length=50)
     Age = models.IntegerField()
     Email = models.EmailField()
-    Phone = models.CharField(validators=[phone_regex], max_length=15, blank=True)
+    Phone = models.CharField(max_length=16, validators=[validate_phone_number])
     Location = models.CharField(max_length=255)
     Hobby = models.CharField(max_length=255)
 
